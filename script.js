@@ -1,45 +1,27 @@
-// Register
-function register() {
-    let user = document.getElementById("regUser").value;
-    let pass = document.getElementById("regPass").value;
+function addTask() {
+    let title = document.getElementById("title").value.trim();
+    let desc = document.getElementById("desc").value.trim();
 
-    if (user === "" || pass === "") {
-        alert("Fill all fields");
+    if (title === "" || desc === "") {
+        alert("Please fill all fields");
         return;
     }
 
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
+    let task = document.createElement("div");
+    task.className = "task";
 
-    alert("Registered Successfully!");
-    window.location.href = "index.html";
+    task.innerHTML = `
+        <span>${title}</span>
+        <span>${desc}</span>
+        <button onclick="deleteTask(this)">X</button>
+    `;
+
+    document.getElementById("taskList").appendChild(task);
+
+    document.getElementById("title").value = "";
+    document.getElementById("desc").value = "";
 }
 
-// Login
-function login() {
-    let user = document.getElementById("loginUser").value;
-    let pass = document.getElementById("loginPass").value;
-
-    let storedUser = localStorage.getItem("username");
-    let storedPass = localStorage.getItem("password");
-
-    if (user === storedUser && pass === storedPass) {
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Invalid credentials");
-    }
-}
-
-// Check login
-function checkLogin() {
-    if (localStorage.getItem("loggedIn") !== "true") {
-        window.location.href = "index.html";
-    }
-}
-
-// Logout
-function logout() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
+function deleteTask(btn) {
+    btn.parentElement.remove();
 }

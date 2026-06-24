@@ -1,22 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>To-Do List App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="form">
-        <h2>Login</h2>
-        <input type="text" id="loginUser" placeholder="Username">
-        <input type="password" id="loginPass" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p>Don't have an account? <a href="register.html">Register</a></p>
+    <div class="main">
+        <h1>To-Do List Web App</h1>
+
+        <div class="container">
+
+            <!-- FORM -->
+            <div class="form">
+                <input type="text" id="title" placeholder="Title">
+                <textarea id="desc" placeholder="Description"></textarea>
+                <button onclick="addTask()">Save</button>
+            </div>
+
+            <!-- LIST -->
+            <div class="list">
+                <div class="header">
+                    <span>Title</span>
+                    <span>Description</span>
+                    <span>Delete</span>
+                </div>
+
+                <div id="taskList"></div>
+            </div>
+
+        </div>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>
